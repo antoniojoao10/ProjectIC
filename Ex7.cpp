@@ -5,8 +5,10 @@
 using namespace std;
 
 int main(int argc, char** argv){
-    ifstream ifs(argv[1]);
-    ofstream ofs(argv[2]);
+    ifstream iFile;
+    ofstream oFile;
+
+    iFile.open(argv[1]);
 
     string line;
     string allLines;

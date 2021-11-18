@@ -1,34 +1,39 @@
-#include<iostream>
-#include<chrono>
-#include<opencv2/opencv.hpp>
+#include <iostream>
+#include <fstream>
 
-using namespace cv;
 using namespace std;
 
-int main(int argc, char *argv[]){
-    VideoCapture cap;
+int main(int argc, char** argv) {
+    ifstream iFile;
+    ofstream oFile;
 
-    if(argc ==2){ cap = VideoCapture(argv[1]); } else{  cap = VideoCapture(0);}
+    iFile.open(argv[1]);
 
-    if(!cap.isOpened())
-        return -1;
+    // Gets original image first byte
+    char * first_byte = new char [3];
+    iFile >> first_byte;
+
+    // Gets original width
+    char * width = new char [3];
+    iFile >> width;
+
+    // Gets original image height
+    char * height = new char [3];
+    iFile >> height;
+
+    // Gets original image max
+    char * max = new char [3];
+    iFile >> max;
+
+    oFile.open("new_image.ppm");
+    oFile << first_byte << endl;
+    oFile << width << " " << height << endl;
+    oFile << max;
+    
+    char * buffer = new char [3];
+    while (iFile.good()) {
+        iFile.read(buffer, 3);
         
-    Mat frame;
-
-    int framePeriod { int(1000. / cap.get(CAP_PROP_FPS))};
-    bool terminate = false;
-    namedWindow("OpenCV video");
-    while(!terminate){
-        if(!cap.read(frame))
-            imshow("OpenCV video", frame);
-        else   
-            terminate = true;
-        int key = waitKey(framePeriod);
-        switch(key){
-            case 'q':
-                terminate = true;
-                break;
-        }
+        oFile.write(buffer, 3);
     }
-    return 0;
 }
