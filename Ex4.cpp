@@ -33,7 +33,6 @@ int main(int argc, char** argv) {
     char * buffer = new char [3];
     while (iFile.good()) {
         iFile.read(buffer, 3);
-        
         oFile.write(buffer, 3);
     }
 }
