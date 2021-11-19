@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-
 #include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
 
 inline uchar reduceVal(const uchar val) {
     if (val < 64) 

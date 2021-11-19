@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     calcHist(&rgb_planes[1], 1, 0, Mat(), greenHistogram, 1, &histogramSize, histogramRange, uniform, accumulate);
     calcHist(&rgb_planes[2], 1, 0, Mat(), redHistogram, 1, &histogramSize, histogramRange, uniform, accumulate);
     
-    int histogram_width = 512, histogram_height = 400;
+    int histogram_width = 500, histogram_height = 400;
     int bin_w = cvRound((double) histogram_width / histogramSize);
     
     Mat histogramImage(histogram_height, histogram_width, CV_8UC3, Scalar(0,0,0));
@@ -46,9 +46,6 @@ int main(int argc, char** argv) {
             Point(bin_w*(i), histogram_height - cvRound(redHistogram.at<float>(i))),
             Scalar(0, 0, 255), 2, 8, 0);
     }
-    
-    imshow("Histogram", histogramImage);
-    waitKey();
     
     cv::imwrite("image_histogram.jpg", histogramImage); 
 
