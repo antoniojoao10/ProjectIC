@@ -1,5 +1,6 @@
 #include <iostream>
- 
+#include <string>
+
 #include <opencv2/highgui/highgui.hpp>  
 
 using namespace std;
@@ -20,7 +21,7 @@ int main(int argc, char** argv) {
     double sse = s.val[0] + s.val[1] + s.val[2]; 
     double  mse = sse / (double) (input.channels() * input.total());
     double psnr = 10.0 * log10((255*255) / mse);
-    cout << psnr << endl;
+    cout << "SNR: " << psnr << endl;
     
     return 0;
 }
