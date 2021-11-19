@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    cv::imwrite("new_image.jpg", input);   
+    cv::imwrite("new_image.ppm", input);   
     cv::waitKey(0);
 
     return 0;
