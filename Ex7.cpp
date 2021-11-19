@@ -47,8 +47,10 @@ int main(int argc, char** argv) {
             Scalar(0, 0, 255), 2, 8, 0);
     }
     
-    imshow("Histogram", histogramImage );
+    imshow("Histogram", histogramImage);
     waitKey();
+    
+    cv::imwrite("image_histogram.jpg", histogramImage); 
 
     return 0;
 }
