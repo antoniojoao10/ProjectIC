@@ -3,10 +3,6 @@
 #include<string.h>
 #include<sndfile.h>
 
-#include <bitset>
-
-
-
 using namespace std;
 
 int main(int argc, char** argv){
